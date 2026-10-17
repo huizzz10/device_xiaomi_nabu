@@ -24,7 +24,6 @@
 package custom.hardware.hwcontrol;
 @Backing(type="int") @VintfStability
 enum HwType {
-  KEYBOARD,
   STYLUS,
   GAMEMODE,
 }

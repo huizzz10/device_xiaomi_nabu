@@ -307,6 +307,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
+# Keyboard
+PRODUCT_PACKAGES += \
+    XiaomiKeyboard
+
 # Keylayout
 PRODUCT_PACKAGES += \
     sm8150-tavil-snd-card_Button_Jack.kl

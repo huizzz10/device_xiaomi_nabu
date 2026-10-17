@@ -1,0 +1,9 @@
+# Copyright (C) 2026 Neokoni <dulin081682@126.com>
+#
+# SPDX-License-Identifier: MIT
+#
+
+service XiaomiKeyboardService /system_ext/bin/XiaomiKeyboard
+    class main
+    user system
+    group system usb

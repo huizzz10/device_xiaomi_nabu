@@ -11,7 +11,6 @@ use custom_hardware_hwcontrol::aidl::custom::hardware::hwcontrol::{
 };
 
 use log::{error, info};
-mod keyboard;
 mod pen;
 mod game_mode;
 mod sysfs;
@@ -27,7 +26,6 @@ impl IHwControl for HwControl {
         let enable = enable != 0;
 
         let result = match hw {
-            HwType::KEYBOARD => keyboard::set_keyboard(enable),
             HwType::STYLUS => pen::set_pen(enable),
             HwType::GAMEMODE => game_mode::set_game_mode(enable),
             _ => {
@@ -47,7 +45,6 @@ impl IHwControl for HwControl {
 
     fn getHwState(&self, _hw: HwType) -> binder::Result<i32> {
         let result = match _hw {
-            HwType::KEYBOARD => keyboard::get_keyboard(),
             HwType::STYLUS => pen::get_pen(),
             HwType::GAMEMODE => game_mode::get_game_mode(),
             _ => {

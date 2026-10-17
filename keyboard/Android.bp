@@ -1,0 +1,19 @@
+//
+// Copyright (C) 2026 Neokoni <dulin081682@126.com>
+//
+// SPDX-License-Identifier: MIT
+//
+
+cc_binary {
+    name: "XiaomiKeyboard",
+    srcs: ["XiaomiKeyboard.c"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    init_rc: ["XiaomiKeyboard.rc"],
+    shared_libs: [
+        "liblog",
+    ],
+    system_ext_specific: true,
+}

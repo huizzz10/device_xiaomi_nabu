@@ -17,14 +17,12 @@ object PreferenceManager {
     // Preference file names
     private const val PREF_STYLUS = "shared_stylus"
     private const val PREF_STYLUS_GEN = "shared_stylus_gen"
-    private const val PREF_KEYBOARD = "shared_keyboard"
     private const val PREF_GAMEMODE = "shared_gamemode"
     
     // Preference keys
     const val KEY_STYLUS = "shared_stylus"
     const val KEY_STYLUS_GEN = "shared_stylus_gen"
     const val KEY_STYLUS_GEN_PROP = "persist.mi_pen.gen"
-    const val KEY_KEYBOARD = "shared_keyboard"
     const val KEY_GAMEMODE = "shared_gamemode"
     
     // Default values
@@ -57,20 +55,6 @@ object PreferenceManager {
      */
     fun setStylusGeneration(context: Context, generation: String) {
         getPreferences(context, PREF_STYLUS_GEN).edit().putString(KEY_STYLUS_GEN, generation).apply()
-    }
-    
-    /**
-     * Get keyboard enable/disable state
-     */
-    fun getKeyboardEnabled(context: Context): Int {
-        return getPreferences(context, PREF_KEYBOARD).getInt(KEY_KEYBOARD, DEFAULT_DISABLED)
-    }
-    
-    /**
-     * Set keyboard enable/disable state
-     */
-    fun setKeyboardEnabled(context: Context, enabled: Int) {
-        getPreferences(context, PREF_KEYBOARD).edit().putInt(KEY_KEYBOARD, enabled).apply()
     }
     
     /**

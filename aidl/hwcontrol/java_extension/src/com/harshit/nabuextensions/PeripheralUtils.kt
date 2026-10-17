@@ -11,7 +11,7 @@ import android.util.Log
 import custom.hardware.hwcontrol.HwType
 
 /**
- * Utility class for managing peripheral devices (stylus, keyboard).
+ * Utility class for managing peripheral devices (stylus, game mode).
  * Handles synchronization of hardware states on boot and preference changes.
  */
 object PeripheralUtils {
@@ -48,17 +48,6 @@ object PeripheralUtils {
     }
     
     /**
-     * Synchronize keyboard hardware state with saved preferences
-     */
-    fun syncKeyboard(context: Context) {
-        val enabled = PreferenceManager.getKeyboardEnabled(context)
-        
-        Log.d(TAG, "Syncing keyboard: enabled=$enabled")
-        
-        HwStateManager.setHwState(HwType.KEYBOARD, enabled)
-    }
-    
-    /**
      * Synchronize game mode hardware state with saved preferences
      */
     fun syncGameMode(context: Context) {
@@ -71,10 +60,13 @@ object PeripheralUtils {
     
     /**
      * Synchronize all peripheral hardware states
+     *
+     * Keyboard is not included: the xiaomi_keyboard kernel driver now
+     * auto-enables the keyboard at boot, and the pogo contacts power it
+     * on attach (plug-and-play USB HID). No userspace sync needed.
      */
     private fun syncAll(context: Context) {
         syncStylus(context)
-        syncKeyboard(context)
         syncGameMode(context)
     }
 }
