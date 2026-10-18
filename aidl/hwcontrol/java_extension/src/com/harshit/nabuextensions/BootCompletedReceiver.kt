@@ -37,6 +37,9 @@ class BootCompletedReceiver : BroadcastReceiver() {
         Log.i(tag, "Boot completed, initializing hardware controls")
         PeripheralUtils.bootResetState(storageContext)
 
+        // Cover flap always sleeps the device when closed, no opt-out.
+        CoverFlapUtils.enforceSleepOnLidClose(storageContext)
+
         // Start pen charging notification service
         PenChargingService.start(storageContext)
     }
