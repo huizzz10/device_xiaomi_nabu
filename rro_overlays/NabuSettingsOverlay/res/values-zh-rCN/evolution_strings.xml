@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The Evolution X Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Settings > About tablet > Model: maintainer card (unofficial builds) -->
+    <string name="build_maintainer_label">维护者</string>
+    <string name="build_maintainer">构建维护者</string>
+    <string name="maintainer_support">支持</string>
+    <string name="maintainer_link_github">GitHub 个人主页</string>
+    <string name="maintainer_link_donate">捐赠</string>
+
+    <!-- Build type badges -->
+    <string name="build_type_official">官方版本</string>
+    <string name="build_type_unofficial">非官方版本</string>
+</resources>
