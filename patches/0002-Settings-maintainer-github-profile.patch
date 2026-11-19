@@ -1,0 +1,105 @@
+diff --git a/res/values/evolution_strings.xml b/res/values/evolution_strings.xml
+index 283cb2c..fd1f8a7 100644
+--- a/res/values/evolution_strings.xml
++++ b/res/values/evolution_strings.xml
+@@ -12,6 +12,8 @@
+     <string name="build_maintainer">Build maintainer</string>
+     <string name="build_maintainer_summary" translatable="false">Unknown</string>
+     <string name="build_maintainer_donate_url" translatable="false">https://linktr.ee/joeyhuab</string>
++    <!-- GitHub profile shown on the maintainer card of unofficial builds. -->
++    <string name="build_maintainer_github_url" translatable="false"></string>
+     <string name="maintainer_link_github">GitHub profile</string>
+     <string name="maintainer_link_donate">Donate</string>
+     <string name="maintainer_support">Support</string>
+diff --git a/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java b/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
+index 7b1664d..629b124 100644
+--- a/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
++++ b/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
+@@ -1133,10 +1133,10 @@ public class ModelPageController extends BasePreferenceController {
+         String summary = UrlUtils.trimToEmpty(mContext.getString(R.string.build_maintainer_summary));
+         if (summary.isEmpty() || summary.equalsIgnoreCase("Unknown")) return;
+ 
+-        String donateUrl = UrlUtils.trimToEmpty(
+-                mContext.getString(R.string.build_maintainer_donate_url));
++        String githubUrl = UrlUtils.trimToEmpty(
++                mContext.getString(R.string.build_maintainer_github_url));
+ 
+-        showMaintainerCard(layoutPref, null, summary, donateUrl);
++        showMaintainerCard(layoutPref, null, summary, null, githubUrl);
+     }
+ 
+     private void fetchOtaDataAndShow(LayoutPreference layoutPref, String codename) {
+@@ -1165,23 +1165,28 @@ public class ModelPageController extends BasePreferenceController {
+             // Unofficial overlay fallback
+             final String overlayMaintainer;
+             final String overlayDonateUrl;
++            final String overlayGithubUrl;
+             if (data == null || data.maintainer == null || data.maintainer.isEmpty()) {
+                 String summary = UrlUtils.trimToEmpty(mContext.getString(R.string.build_maintainer_summary));
+                 overlayMaintainer = summary.equalsIgnoreCase("Unknown") ? null : summary;
+                 overlayDonateUrl  = UrlUtils.trimToEmpty(mContext.getString(R.string.build_maintainer_donate_url));
++                overlayGithubUrl  = UrlUtils.trimToEmpty(mContext.getString(R.string.build_maintainer_github_url));
+             } else {
+                 overlayMaintainer = null;
+                 overlayDonateUrl  = null;
++                overlayGithubUrl  = null;
+             }
+ 
+             final OtaEntry finalData       = data;
+             final String   finalOem        = oemRaw;
+             final String   finalOverlay    = overlayMaintainer;
+             final String   finalOverlayUrl = overlayDonateUrl;
++            final String   finalOverlayGithub = overlayGithubUrl;
+ 
+             mMainHandler.post(() -> {
+                 if (mDestroyed) return;
+-                showMaintainerCard(layoutPref, finalData, finalOverlay, finalOverlayUrl);
++                showMaintainerCard(layoutPref, finalData, finalOverlay, finalOverlayUrl,
++                        finalOverlayGithub);
+                 bindOem(layoutPref, finalOem);
+                 if (finalOem != null && !finalOem.isEmpty()) {
+                     loadDeviceImage(layoutPref, codename, finalOem);
+@@ -1193,7 +1198,8 @@ public class ModelPageController extends BasePreferenceController {
+     // ---- Maintainer card ----------------------------------------------------
+ 
+     private void showMaintainerCard(LayoutPreference layoutPref,
+-            OtaEntry data, String overlayName, String overlayDonateUrl) {
++            OtaEntry data, String overlayName, String overlayDonateUrl,
++            String overlayGithubUrl) {
+         View card = layoutPref.findViewById(R.id.maintainer_card);
+         if (card == null) return;
+ 
+@@ -1245,8 +1251,12 @@ public class ModelPageController extends BasePreferenceController {
+             }
+         } else {
+             if (badgeView != null) badgeView.setVisibility(View.GONE);
+-            final String donateUrl = UrlUtils.sanitizeUrl(overlayDonateUrl);
+-            setupMaintainerActions(card, support, null, donateUrl);
++            final String githubUrl = UrlUtils.sanitizeUrl(overlayGithubUrl);
++            setupMaintainerActions(card, support, githubUrl, null);
++            if (avatarView != null && githubUrl != null) {
++                final String username = githubUsername(githubUrl);
++                if (username != null) loadGithubAvatar(layoutPref, username);
++            }
+         }
+ 
+         card.setVisibility(View.VISIBLE);
+@@ -1259,6 +1269,18 @@ public class ModelPageController extends BasePreferenceController {
+         GithubAvatarLoader.getInstance().loadIntoImageView(mContext, av, username);
+     }
+ 
++    /** Extracts the profile name from a GitHub URL, if there is one. */
++    private static String githubUsername(String url) {
++        if (url == null) return null;
++        final String marker = "github.com/";
++        final int idx = url.toLowerCase(Locale.ROOT).indexOf(marker);
++        if (idx < 0) return null;
++        String rest = url.substring(idx + marker.length());
++        final int slash = rest.indexOf('/');
++        if (slash >= 0) rest = rest.substring(0, slash);
++        return rest.isEmpty() ? null : rest;
++    }
++
+     /**
+      * Wires up the maintainer actions.
+      *

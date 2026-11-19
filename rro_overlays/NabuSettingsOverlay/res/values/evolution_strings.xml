@@ -7,4 +7,5 @@
     <!-- Maintainer shown on Settings > About tablet > Model for unofficial builds.
          Official builds fetch this from the Evolution X OTA JSON instead. -->
     <string name="build_maintainer_summary">huizzz10</string>
+    <string name="build_maintainer_github_url" translatable="false">https://github.com/huizzz10</string>
 </resources>
