@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The Evolution X Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- USB mode picker shown when a USB cable is connected -->
+    <string name="usb_mode_picker_title">选择 USB 模式</string>
+    <string name="usb_mode_file_transfer">文件传输</string>
+    <string name="usb_mode_tethering">USB 网络共享</string>
+    <string name="usb_mode_midi">MIDI</string>
+    <string name="usb_mode_photo_transfer">照片和视频传输</string>
+    <string name="usb_mode_webcam">USB 网络摄像头</string>
+    <string name="usb_mode_charging_only">仅充电</string>
+    <string name="usb_charging_status">USB 充电中</string>
+</resources>
