@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The Evolution X Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Maintainer shown on Settings > About tablet > Model for unofficial builds.
+         Official builds fetch this from the Evolution X OTA JSON instead. -->
+    <string name="build_maintainer_summary">huizzz10</string>
+</resources>
