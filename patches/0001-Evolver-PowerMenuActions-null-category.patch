@@ -1,0 +1,55 @@
+diff --git a/src/org/evolution/settings/fragments/powermenu/PowerMenuActions.java b/src/org/evolution/settings/fragments/powermenu/PowerMenuActions.java
+index ed9cd52..408b912 100644
+--- a/src/org/evolution/settings/fragments/powermenu/PowerMenuActions.java
++++ b/src/org/evolution/settings/fragments/powermenu/PowerMenuActions.java
+@@ -29,6 +29,7 @@ import android.service.controls.ControlsProviderService;
+ import androidx.preference.SwitchPreferenceCompat;
+ import androidx.preference.Preference;
+ import androidx.preference.PreferenceCategory;
++import androidx.preference.PreferenceGroup;
+ 
+ import com.android.internal.logging.nano.MetricsProto;
+ import com.android.internal.widget.LockPatternUtils;
+@@ -102,7 +103,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
+         }
+ 
+         if (!TelephonyUtils.isVoiceCapable(getActivity())) {
+-            mPowerMenuItemsCategory.removePreference(mEmergencyPref);
++            removePreference(mEmergencyPref);
+             mEmergencyPref = null;
+         }
+     }
+@@ -195,6 +196,24 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
+         return true;
+     }
+ 
++    /**
++     * Removes a preference from the power menu items category, falling back to the
++     * screen itself. Some layouts do not declare the category at all; findPreference()
++     * then returns null and removing the preference through it crashed the settings
++     * app on devices that are not voice capable, such as tablets.
++     */
++    private void removePreference(Preference preference) {
++        if (preference == null) {
++            return;
++        }
++
++        PreferenceGroup parent = mPowerMenuItemsCategory != null
++                ? mPowerMenuItemsCategory : getPreferenceScreen();
++        if (parent != null) {
++            parent.removePreference(preference);
++        }
++    }
++
+     private void updatePreferences() {
+         boolean isKeyguardSecure = mLockPatternUtils.isSecure(UserHandle.myUserId());
+         if (mLockDownPref != null) {
+@@ -209,7 +228,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
+         }
+         if (mUsersPref != null) {
+             if (!UserHandle.MU_ENABLED || !UserManager.supportsMultipleUsers()) {
+-                mPowerMenuItemsCategory.removePreference(mUsersPref);
++                removePreference(mUsersPref);
+                 mUsersPref = null;
+             } else {
+                 List<UserInfo> users = mUserManager.getUsers();
