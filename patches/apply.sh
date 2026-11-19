@@ -50,3 +50,4 @@ nabu_apply_patch() {
 
 nabu_apply_patch packages/apps/Evolver 0001-Evolver-PowerMenuActions-null-category.patch
 nabu_apply_patch packages/apps/Settings 0002-Settings-maintainer-github-profile.patch
+nabu_apply_patch packages/apps/Settings 0003-Settings-nabu-device-image.patch

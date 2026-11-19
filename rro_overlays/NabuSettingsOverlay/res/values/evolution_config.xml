@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The Evolution X Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Drawable shipped from the Settings source patch; draws the official
+         Xiaomi Pad 5 render without any network access. -->
+    <string name="config_deviceImageDrawable" translatable="false">nabu_device_image</string>
+</resources>
