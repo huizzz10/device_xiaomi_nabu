@@ -10,6 +10,7 @@ android_app {
     static_libs: [
         "custom.hardware.hwcontrol-V2-java",
         "org.lineageos.settings.resources",
+        "SettingsLibSettingsTheme",
         "androidx.preference_preference",
     ],
 

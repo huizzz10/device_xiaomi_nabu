@@ -24,6 +24,11 @@
         android:title="@string/stylus_gen_switch_title"
         android:summary="@string/stylus_gen_switch_summary"/>
 
+    <com.android.settingslib.widget.SpacePreference
+        android:key="stylus_items_divider"
+        android:selectable="false"
+        android:layout_height="4dp" />
+
     <SwitchPreferenceCompat
         android:key="stylus_switch_key"
         android:defaultValue="false"

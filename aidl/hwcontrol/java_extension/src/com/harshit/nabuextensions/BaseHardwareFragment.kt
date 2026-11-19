@@ -8,7 +8,7 @@ package com.harshit.nabuextensions
 import android.os.Bundle
 import android.util.Log
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
+import com.android.settingslib.widget.SettingsBasePreferenceFragment
 import androidx.preference.SwitchPreferenceCompat
 
 /**
@@ -16,7 +16,7 @@ import androidx.preference.SwitchPreferenceCompat
  * Eliminates code duplication by providing common functionality for
  * switch-based hardware control settings.
  */
-abstract class BaseHardwareFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener {
+abstract class BaseHardwareFragment : SettingsBasePreferenceFragment(), Preference.OnPreferenceChangeListener {
     
     private val logTag: String get() = this::class.java.simpleName
     
