@@ -2,14 +2,20 @@
 #
 # Apply the device specific source patches.
 #
-# Idempotent: already applied patches are skipped, and a patch that no longer
-# applies only prints a warning so the build itself keeps going.
+# Safe to run from any shell, any working directory and any number of
+# concurrent builds: already applied patches are skipped, a patch that no
+# longer applies only prints a warning (the build keeps going), and losing a
+# race against another build is not reported as a failure.
 #
-# Called from vendorsetup.sh and from device.mk ($(shell)), so keep it shell
-# agnostic and fast.
+# Invoked by vendorsetup.sh (envsetup) and by device.mk ($(shell)) at build
+# time, so keep it shell agnostic and fast.
 
-nabu_top="${ANDROID_BUILD_TOP:-$(pwd)}"
-nabu_patches="$nabu_top/device/xiaomi/nabu/patches"
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd) || exit 0
+nabu_dir=$(dirname "$script_dir")                  # .../device/xiaomi/nabu
+tree_top=$(CDPATH= cd -- "$nabu_dir/../../.." && pwd) || tree_top=$(pwd)
+
+nabu_top="${ANDROID_BUILD_TOP:-$tree_top}"
+nabu_patches="$script_dir"
 
 nabu_apply_patch() {
     repo="$nabu_top/$1"
@@ -30,7 +36,13 @@ nabu_apply_patch() {
     fi
 
     if git -C "$repo" apply --check "$patch" >/dev/null 2>&1; then
-        git -C "$repo" apply "$patch" && echo "nabu: applied $2" >&2
+        if git -C "$repo" apply "$patch" 2>/dev/null; then
+            echo "nabu: applied $2" >&2
+        elif git -C "$repo" apply --reverse --check "$patch" >/dev/null 2>&1; then
+            : # another build applied it first
+        else
+            echo "nabu: WARNING: failed to apply $2 to $1" >&2
+        fi
     else
         echo "nabu: WARNING: $2 does not apply to $1, fix it or resync" >&2
     fi

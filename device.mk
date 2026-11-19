@@ -1,6 +1,6 @@
 # Apply the device specific source patches before anything is built.
 # The script is idempotent, so this is safe on every make invocation.
-$(shell sh $(dir $(lastword $(MAKEFILE_LIST)))patches/apply.sh >&2)
+$(shell sh $(abspath $(dir $(lastword $(MAKEFILE_LIST)))patches/apply.sh) >&2)
 
 #
 # Copyright (C) 2021 The LineageOS Project
