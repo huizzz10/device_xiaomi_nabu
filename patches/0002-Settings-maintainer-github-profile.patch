@@ -12,7 +12,7 @@ index 283cb2c..fd1f8a7 100644
      <string name="maintainer_link_donate">Donate</string>
      <string name="maintainer_support">Support</string>
 diff --git a/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java b/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
-index 7b1664d..629b124 100644
+index 7b1664d..7eded55 100644
 --- a/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
 +++ b/src/com/android/settings/deviceinfo/hardwareinfo/ModelPageController.java
 @@ -1133,10 +1133,10 @@ public class ModelPageController extends BasePreferenceController {
@@ -69,7 +69,7 @@ index 7b1664d..629b124 100644
          View card = layoutPref.findViewById(R.id.maintainer_card);
          if (card == null) return;
  
-@@ -1245,8 +1251,12 @@ public class ModelPageController extends BasePreferenceController {
+@@ -1245,8 +1251,13 @@ public class ModelPageController extends BasePreferenceController {
              }
          } else {
              if (badgeView != null) badgeView.setVisibility(View.GONE);
@@ -77,6 +77,7 @@ index 7b1664d..629b124 100644
 -            setupMaintainerActions(card, support, null, donateUrl);
 +            final String githubUrl = UrlUtils.sanitizeUrl(overlayGithubUrl);
 +            setupMaintainerActions(card, support, githubUrl, null);
++            showGithubSupportButton(support, githubUrl);
 +            if (avatarView != null && githubUrl != null) {
 +                final String username = githubUsername(githubUrl);
 +                if (username != null) loadGithubAvatar(layoutPref, username);
@@ -84,10 +85,17 @@ index 7b1664d..629b124 100644
          }
  
          card.setVisibility(View.VISIBLE);
-@@ -1259,6 +1269,18 @@ public class ModelPageController extends BasePreferenceController {
+@@ -1259,6 +1270,25 @@ public class ModelPageController extends BasePreferenceController {
          GithubAvatarLoader.getInstance().loadIntoImageView(mContext, av, username);
      }
  
++    /** Points the stock Support button at the GitHub profile of unofficial builds. */
++    private void showGithubSupportButton(View support, String githubUrl) {
++        if (support == null || githubUrl == null) return;
++        ModelPageShapes.setSupportButton((ComposeView) support, () -> openUrl(githubUrl));
++        support.setVisibility(View.VISIBLE);
++    }
++
 +    /** Extracts the profile name from a GitHub URL, if there is one. */
 +    private static String githubUsername(String url) {
 +        if (url == null) return null;
