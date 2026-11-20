@@ -353,6 +353,19 @@
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
 
+    <!-- Control whether the always on display mode is available.  Without this the framework
+         defaults to false, which hides the "Always-on display" (屏幕常亮) switch in Settings,
+         the AOD quick settings tile, the AOD schedule page and the pickup gesture's "show
+         ambient display" option.  The panel is driven through the DOZE_SUSPEND => ON path
+         below (see doze_suspend_display_state_supported), so the backlight simply stays on at
+         config_screenBrightnessDoze while dozing. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Control whether the always on display mode is enabled by default.  nabu has an IPS
+         LCD panel, so AOD keeps the backlight alive at the doze brightness; leave it off by
+         default and let the user opt in from Settings > Display > Always-on display. -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
 
