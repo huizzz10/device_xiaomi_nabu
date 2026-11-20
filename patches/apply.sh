@@ -69,6 +69,7 @@ nabu_apply_patch() {
 nabu_apply_patch packages/apps/Evolver 0001-Evolver-PowerMenuActions-null-category.patch
 nabu_apply_patch packages/apps/Settings 0002-Settings-maintainer-github-profile.patch
 nabu_apply_patch packages/apps/Settings 0003-Settings-nabu-device-image.patch
+nabu_apply_patch packages/apps/Updater 0004-Updater-zh-rCN-strings.patch
 
 if [ "$nabu_failed" -ne 0 ]; then
     echo "nabu: ERROR: device source patches did not apply cleanly, fix device/xiaomi/nabu/patches or resync the affected repos" >&2

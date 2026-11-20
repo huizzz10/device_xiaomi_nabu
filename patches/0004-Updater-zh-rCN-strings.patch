@@ -1,0 +1,31 @@
+diff --git a/app/src/main/res/values-zh-rCN/strings.xml b/app/src/main/res/values-zh-rCN/strings.xml
+index c224e07..16b43af 100644
+--- a/app/src/main/res/values-zh-rCN/strings.xml
++++ b/app/src/main/res/values-zh-rCN/strings.xml
+@@ -132,4 +132,26 @@
+     <string name="local_update_import_success_message">构建日期：<xliff:g id="build_date" example="Apr 27">%1$s</xliff:g>\n\n点击已导入的更新以查看可用操作。</string>
+     <string name="local_update_import_failure">导入本地更新失败</string>
+     <string name="local_update_name">本地更新</string>
++    <string name="checking_for_update_title">正在检查更新\u2026</string>
++    <string name="preparing_update_title">正在准备系统更新\u2026</string>
++    <string name="downloading_update_title">系统更新下载中\u2026</string>
++    <string name="installing_update_title">正在安装系统更新\u2026</string>
++    <string name="verifying_update_title">正在验证系统更新\u2026</string>
++    <string name="update_paused_title">系统更新已暂停</string>
++    <string name="system_up_to_date_title">系统已是最新版本</string>
++    <string name="update_available_title">有可用的系统更新</string>
++    <string name="updates_check_failed_title">无法检查更新</string>
++    <string name="check_for_update">检查更新</string>
++    <string name="action_download_install">下载并安装</string>
++    <string name="downloading_installing_caption">正在下载并安装更新</string>
++    <string name="action_back">返回</string>
++    <string name="menu_more_options">更多选项</string>
++    <string name="changelog_loading">正在加载近期变更\u2026</string>
++    <string name="changelog_failed">近期变更暂时不可用。</string>
++    <string name="changelog_empty">此版本未提供更新日志。</string>
++    <string name="changelog_view_all">查看所有变更</string>
++    <string name="header_last_check">上次成功检查更新：</string>
++    <string name="header_android_version_full">Android 版本：<xliff:g id="version" example="16">%1$s</xliff:g></string>
++    <string name="header_security_update_full">Android 安全更新：<xliff:g id="date" example="5 July 2026">%1$s</xliff:g></string>
++    <string name="metered_warning_footnote">通过移动网络或按流量计费的 Wi-Fi 下载更新可能会产生额外费用。</string>
+ </resources>
