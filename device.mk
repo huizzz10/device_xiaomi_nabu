@@ -1,6 +1,12 @@
 # Apply the device specific source patches before anything is built.
 # The script is idempotent, so this is safe on every make invocation.
-$(shell sh $(abspath $(dir $(lastword $(MAKEFILE_LIST)))patches/apply.sh) >&2)
+# $(shell) does not propagate the exit status, so capture it explicitly and
+# turn a failure into a hard make error: a stale patch must break the build
+# instead of silently shipping without the change.
+NABU_PATCH_EXIT := $(shell sh $(abspath $(dir $(lastword $(MAKEFILE_LIST)))patches/apply.sh) >&2; echo $$?)
+ifneq ($(NABU_PATCH_EXIT),0)
+$(error nabu: device source patches failed to apply (exit $(NABU_PATCH_EXIT)), fix device/xiaomi/nabu/patches or resync)
+endif
 
 #
 # Copyright (C) 2021 The LineageOS Project

@@ -6,5 +6,8 @@
 
 nabu_top="${ANDROID_BUILD_TOP:-$(pwd)}"
 if [ -x "$nabu_top/device/xiaomi/nabu/patches/apply.sh" ]; then
-    "$nabu_top/device/xiaomi/nabu/patches/apply.sh"
+    if ! "$nabu_top/device/xiaomi/nabu/patches/apply.sh"; then
+        echo "nabu: ERROR: device source patches failed to apply, fix device/xiaomi/nabu/patches or resync before building." >&2
+        return 1 2>/dev/null || exit 1
+    fi
 fi
