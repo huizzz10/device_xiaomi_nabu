@@ -24,6 +24,11 @@
     <string name="security_settings_face_enroll_finish_description_with_bp">现在你可以使用面容解锁手机或验证身份，例如登录应用或确认购买</string>
     <string name="face_down_sleep_title">翻转息屏</string>
     <string name="face_down_sleep_summary">设备翻转朝下后短时间内自动关闭屏幕</string>
+    <string name="blur_settings_summary_on">已开启（%1$d%%）</string>
+    <string name="blur_settings_summary_off">已关闭</string>
+    <string name="blur_strength">模糊强度</string>
+    <string name="proximity_wake_title">防止意外唤醒</string>
+    <string name="proximity_wake_summary">唤醒屏幕前先检测距离传感器</string>
     <string name="doze_gesture_ambient_title">显示息屏显示</string>
     <string name="doze_gesture_ambient_summary">显示息屏显示，而不是完全唤醒屏幕</string>
     <string name="gesture_wake_ambient">显示息屏显示</string>
@@ -148,6 +153,8 @@
     <string name="battery_saver_refresh_rate_title">降低刷新率</string>
     <string name="battery_saver_refresh_rate_summary">开启省电模式时使用 60 Hz 屏幕刷新率以节省电量</string>
     <string name="battery_saver_refresh_rate_disabled_summary">极致刷新率已开启</string>
+    <string name="min_refresh_rate_title">最低刷新率</string>
+    <string name="max_refresh_rate_title">最高刷新率</string>
     <string name="extreme_refresh_rate_title">极致刷新率</string>
     <string name="extreme_refresh_rate_summary">为所有应用强制使用最高刷新率</string>
     <string name="extreme_refresh_rate_warning">这会让系统选择最高刷新率，忽略用户选择和应用偏好。需要特定刷新率的应用可能运行异常。</string>
