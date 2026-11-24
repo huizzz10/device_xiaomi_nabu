@@ -1,3 +1,29 @@
+diff --git a/app/src/main/res/values-zh-rCN/evolution_strings.xml b/app/src/main/res/values-zh-rCN/evolution_strings.xml
+new file mode 100644
+index 0000000..7b680fa
+--- /dev/null
++++ b/app/src/main/res/values-zh-rCN/evolution_strings.xml
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++     SPDX-FileCopyrightText: 2021-2023 crDroid Android Project
++     SPDX-License-Identifier: Apache-2.0
++-->
++<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
++
++    <string name="maintainer_name">维护者：<xliff:g id="maintainer" example="Maintainer Name">%1$s</xliff:g></string>
++
++    <string name="support_forum">论坛</string>
++    <string name="support_firmware">固件</string>
++    <string name="support_donate">捐赠</string>
++
++    <string name="pref_category_appearance">外观</string>
++    <string name="menu_show_logo">显示徽标</string>
++    <string name="menu_show_logo_summary">在主屏幕上显示 Evolution X 徽标</string>
++    <string name="menu_show_updater_icon">显示更新器图标</string>
++    <string name="menu_show_updater_icon_summary">在顶栏显示更新器图标。关闭后改为在该处显示 Evolution X 徽标</string>
++
++</resources>
 diff --git a/app/src/main/res/values-zh-rCN/strings.xml b/app/src/main/res/values-zh-rCN/strings.xml
 index c224e07..16b43af 100644
 --- a/app/src/main/res/values-zh-rCN/strings.xml
