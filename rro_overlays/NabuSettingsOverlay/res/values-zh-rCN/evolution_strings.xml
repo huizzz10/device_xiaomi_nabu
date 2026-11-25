@@ -117,6 +117,12 @@
     <string name="app_volume">应用音量</string>
     <string name="app_volume_title">按应用音量控制</string>
     <string name="app_volume_summary">在音量对话框中显示按应用调节音量的按钮</string>
+    <string name="volume_steps_title">音量步进</string>
+    <string name="volume_steps_summary">控制每种音频流的调节精度</string>
+    <string name="max_music_volume_title">媒体</string>
+    <string name="max_call_volume_title">通话</string>
+    <string name="max_alarm_volume_title">闹钟</string>
+    <string name="steps_unit">步</string>
     <string name="force_lte_ca_title">载波聚合</string>
     <string name="force_lte_ca_summary">通过聚合受支持的频段提升 LTE 带宽</string>
     <string name="incall_vibration_category">通话振动选项</string>
@@ -233,6 +239,8 @@
     <string name="radio_info_title">无线电信息</string>
     <string name="override_mock_location_title">覆盖模拟位置限制</string>
     <string name="override_mock_location_summary">启用后，应用无法检测模拟位置</string>
+    <string name="override_mock_location_summary_on">模拟位置对应用隐藏</string>
+    <string name="override_mock_location_summary_off">应用可以检测到模拟位置</string>
     <string name="always_on_display_schedule_title">常亮显示时间表</string>
     <string name="string_disabled">已禁用</string>
     <string name="always_on_display_schedule_sunset">日落</string>

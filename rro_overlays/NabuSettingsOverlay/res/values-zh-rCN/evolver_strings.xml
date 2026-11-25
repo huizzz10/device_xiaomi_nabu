@@ -255,6 +255,8 @@
     <string name="lockscreen_custom_clock_browse_all_clocks">浏览所有时钟</string>
     <string name="lockscreen_custom_clock_dynamic_size_summary">锁屏没有通知或媒体时放大时钟。超大时钟样式保持原有大小</string>
     <string name="lockscreen_custom_clock_dynamic_size_title">动态时钟大小</string>
+    <string name="lockscreen_hide_lock_icon_title">隐藏锁定图标</string>
+    <string name="lockscreen_hide_lock_icon_summary">隐藏锁屏上的锁定和解锁图标，同时保持指纹图标可见</string>
     <string name="lockscreen_smartspace_custom_clock_info">启用自定义时钟样式时不可用</string>
     <string name="ls_media_art_status_bar_above_summary">让电量、信号和时钟显示在封面图上方</string>
     <string name="ls_media_art_status_bar_above_title">状态栏位于封面上方</string>
