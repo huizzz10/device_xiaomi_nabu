@@ -78,6 +78,7 @@ packages/apps/Evolver  0001-Evolver-PowerMenuActions-null-category.patch
 packages/apps/Settings 0002-Settings-maintainer-github-profile.patch
 packages/apps/Settings 0003-Settings-nabu-device-image.patch
 packages/apps/Updater  0004-Updater-zh-rCN-strings.patch
+packages/apps/Settings 0005-Settings-translatable-mock-location-summaries.patch
 LIST
 }
 

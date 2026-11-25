@@ -1,0 +1,26 @@
+diff --git a/res/values/evolution_strings.xml b/res/values/evolution_strings.xml
+--- a/res/values/evolution_strings.xml
++++ b/res/values/evolution_strings.xml
+@@ -391,6 +391,8 @@
+     <!-- Override Mock Location restriction -->
+     <string name="override_mock_location_title">Override mock location restriction</string>
+     <string name="override_mock_location_summary">When enabled, apps cannot detect mock locations</string>
++    <string name="override_mock_location_summary_on">Mock locations are hidden from apps</string>
++    <string name="override_mock_location_summary_off">Apps can detect mock locations</string>
+ 
+     <!-- AOD Schedule -->
+     <string name="always_on_display_schedule_title">Always on display schedule</string>
+diff --git a/res/xml/location_settings.xml b/res/xml/location_settings.xml
+--- a/res/xml/location_settings.xml
++++ b/res/xml/location_settings.xml
+@@ -58,8 +58,8 @@
+     <SwitchPreferenceCompat
+         android:key="override_mock_location"
+         android:title="@string/override_mock_location_title"
+-        android:summaryOn="Mock locations are hidden from apps"
+-        android:summaryOff="Apps can detect mock locations"
++        android:summaryOn="@string/override_mock_location_summary_on"
++        android:summaryOff="@string/override_mock_location_summary_off"
+         android:defaultValue="false"
+         settings:controller="com.android.settings.location.OverrideMockLocationPreferenceController" />
+ 
