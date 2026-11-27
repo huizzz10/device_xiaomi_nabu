@@ -15,9 +15,9 @@
 # Every run ends with one summary line, so a build log answers "were all the
 # patches applied?" without cross referencing the individual messages:
 #
-#   nabu: device source patches: 4 total, 1 applied now, 3 already applied
-#   nabu: ERROR: device source patches: 4 total, 1 applied now, 2 already
-#         applied, 1 FAILED: 0004-Updater-zh-rCN-strings.patch
+#   nabu: device source patches: 3 total, 1 applied now, 2 already applied
+#   nabu: ERROR: device source patches: 3 total, 1 applied now, 1 already
+#         applied, 1 FAILED: 0003-Updater-zh-rCN-strings.patch
 #
 # The per patch "nabu: applied <patch>" line is only printed for a patch this
 # run actually changed, which is why a log that shows a single applied line
@@ -75,10 +75,8 @@ done
 nabu_patch_list() {
     cat <<'LIST'
 packages/apps/Evolver  0001-Evolver-PowerMenuActions-null-category.patch
-packages/apps/Settings 0002-Settings-maintainer-github-profile.patch
-packages/apps/Settings 0003-Settings-nabu-device-image.patch
-packages/apps/Updater  0004-Updater-zh-rCN-strings.patch
-packages/apps/Settings 0005-Settings-translatable-mock-location-summaries.patch
+packages/apps/Settings 0002-Settings-nabu-customizations.patch
+packages/apps/Updater  0003-Updater-zh-rCN-strings.patch
 LIST
 }
 
